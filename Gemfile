@@ -29,7 +29,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'dotenv-rails', groups: [:development, :test]
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
-
+gem 'has_secure_token'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

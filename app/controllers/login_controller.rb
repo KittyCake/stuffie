@@ -3,8 +3,8 @@ class LoginController < ApplicationController
 
   def wechat_params
     {
-      appid: appId,
-      secret: appSecret,
+      appid: ENV["APP_ID"],
+      secret: ENV["APP_SECRET"],
       js_code: params[:code],
       grant_type: "authorization_code"
     }
@@ -16,9 +16,11 @@ class LoginController < ApplicationController
   end
 
   def login
-    @user = User.find_or_create_by(open_id: wechat_user.fetch("openid"))
+    @user = User.find_or_create_by(openid: wechat_user.fetch("openid"))
+    @user.regenerate_access_token
     render json: {
-      userId: @user.id
+      userId: @user.id,
+      access_token: @user.access_token
     }
   end
 end
