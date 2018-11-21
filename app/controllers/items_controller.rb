@@ -51,13 +51,55 @@ class ItemsController < ApplicationController
   def rentingout
     # the list of items that i am currently renting out / that i posted
     # the items i have created should go in here
-    # testie = User.find_by(access_token: params[:access_token])
-    # testie.items
+    # @user = User.find_by(access_token: params[:access_token])
+    if @user.items
+      render json: {
+        items: @user.items
+      }
+    else
+      render json: {
+        error: {
+          code: 3,
+          message: 'No items'
+        }
+      }
+    end
   end
 
   def update
-    # when i click on the edit icon on an item in rentingout i get redirected to the page that is edit and when i click submit it should be changed
+    raise
+    @item = Item.find_by(id: params[:id])
+    if @item.update(item_params)
+      render json: {
+        item: @item
+      }
+    else
+      render json: {
+        error: {
+          code: 3,
+          message: 'No items'
+        }
+      }
+    end
   end
+    # raise
+    # @user = User.find_by(access_token: params[:access_token])
+    # @item = @user.items.find(:id)
+    # @item.name = item_params[:name]
+    # @item.price = item_params[:price]
+    # if @item.save
+    #   render json: {
+    #     item: @item name: "ABC", price: 1234
+    #   }
+    # else
+    #   render json: {
+    #     error: {
+    #       code: 3,
+    #       message: 'No items'
+    #     }
+    #   }
+    # end
+
 
   def destroy
     # when you click on delete icon on an item in rentingout i delete it immediate
