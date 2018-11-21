@@ -9,9 +9,10 @@ Order.destroy_all
 User.destroy_all
 Item.destroy_all
 
-u = User.create()
-i = u.items.create(name: "Ellen", price: 100)
+u1 = User.create()
+u2 = User.create()
+i1 = u1.items.create(name: "Ellen", price: 100)
 # Item.create(name: "Ellen", price: 100, user: u)
-o = Order.create(user_id: u.id, item_id: i.id)
+o1 = Order.create(user_id: u2.id, item_id: i1.id)
 
 # o = Order.create(user: u, item: i)
