@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 2018_11_19_093427) do
     t.text "description"
     t.string "image"
     t.integer "price"
-    t.boolean "status", default: true
+    # t.boolean "status", default: true
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
