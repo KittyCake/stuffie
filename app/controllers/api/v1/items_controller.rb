@@ -60,7 +60,7 @@ class Api::V1::ItemsController < Api::V1::BaseController
   private
 
   def item_params
-    params.require(:item).permit(:name, :price)
+    params.require(:item).permit(:name, :price, :description)
   end
 
   def render_error
