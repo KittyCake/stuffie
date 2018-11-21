@@ -13,8 +13,6 @@ class Api::V1::OrdersController < Api::V1::BaseController
     @order = Order.find_by(id: params[:id])
   end
 
-
-
   private
 
   def order_params
