@@ -67,7 +67,6 @@ class ItemsController < ApplicationController
   end
 
   def update
-    raise
     @item = Item.find_by(id: params[:id])
     if @item.update(item_params)
       render json: {
@@ -82,28 +81,21 @@ class ItemsController < ApplicationController
       }
     end
   end
-    # raise
-    # @user = User.find_by(access_token: params[:access_token])
-    # @item = @user.items.find(:id)
-    # @item.name = item_params[:name]
-    # @item.price = item_params[:price]
-    # if @item.save
-    #   render json: {
-    #     item: @item name: "ABC", price: 1234
-    #   }
-    # else
-    #   render json: {
-    #     error: {
-    #       code: 3,
-    #       message: 'No items'
-    #     }
-    #   }
-    # end
-
 
   def destroy
-    # when you click on delete icon on an item in rentingout i delete it immediate
-
+    @item = Item.find_by(id: params[:id])
+    if @item.delete
+      render json: {
+        item: @item
+      }
+    else
+      render json: {
+        error: {
+          code: 4,
+          message: 'Item was not deleted'
+        }
+      }
+    end
   end
 
   private
