@@ -44,8 +44,24 @@ class ItemsController < ApplicationController
   end
 
   def renting
+    @orders = @user.orders
     # the list of items that i am currently renting
-
+    @items = []
+    @user.orders.each do |order|
+      @items << order.item
+    end
+    if @user.orders
+      render json: {
+        items: @items
+      }
+    else
+      render json: {
+        error: {
+          code: 5,
+          message: 'No renting items'
+        }
+      }
+    end
   end
 
   def rentingout
