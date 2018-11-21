@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
       render json: {
         error: {
           code: 1,
-          message: "Failed"
+          message: "Incorrect Access Token"
         }
       }
     end

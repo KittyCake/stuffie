@@ -4,8 +4,8 @@ class CreateItems < ActiveRecord::Migration[5.2]
       t.string :name
       t.text :description
       t.string :image
-      t.integer :price, default: true
-      t.boolean :status
+      t.integer :price
+      t.boolean :status, default: true
       t.references :user, foreign_key: true
 
       t.timestamps
