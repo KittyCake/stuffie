@@ -32,6 +32,6 @@ class Api::V1::UsersController < Api::V1::BaseController
   end
 
   def rentingout
-    @orders = @user.orders
+    @items = @user.items
   end
 end
