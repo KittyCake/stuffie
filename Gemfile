@@ -32,7 +32,7 @@ gem 'dotenv-rails', groups: [:development, :test]
 gem 'has_secure_token'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-
+gem 'acts-as-taggable-on', '~> 6.0'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
