@@ -1,4 +1,12 @@
 class Api::V1::ItemsController < Api::V1::BaseController
+  def tagged
+    if params[:tag].present?
+      @restaurants = Restaurant.tagged_with(params[:tag])
+    else
+      @restaurants = Restaurant.all
+    end
+  end
+
   def index
     # pass all the items that are avaliable for renting
     @items = Item.all
