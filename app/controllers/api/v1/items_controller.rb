@@ -61,6 +61,7 @@ class Api::V1::ItemsController < Api::V1::BaseController
 
   def destroy
     # when you click on delete icon on an item in rentingout i delete it immediate
+    @item = Item.find_by(id: params[:id])
     @item.destroy
     head :no_content
   end
