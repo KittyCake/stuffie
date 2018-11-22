@@ -16,6 +16,6 @@ class Api::V1::OrdersController < Api::V1::BaseController
   private
 
   def order_params
-    params.require(:order).permit(:item_id)
+    params.require(:order).permit(:item_id, :start_time, :end_time)
   end
 end
