@@ -1,2 +1,3 @@
-class Api::V1::OrdersController < Api::V1::BaseController
+class Api::V1::ReviewsController < Api::V1::BaseController
+
 end
