@@ -1,19 +1,19 @@
 class Api::V1::ItemsController < Api::V1::BaseController
-  def tagged
-    if params[:tag].present?
-      @restaurants = Restaurant.tagged_with(params[:tag])
-    else
-      @restaurants = Restaurant.all
-    end
-  end
+  # def tagged
+  #   if params[:tag].present?
+  #     @restaurants = Restaurant.tagged_with(params[:tag])
+  #   else
+  #     @restaurants = Restaurant.all
+  #   end
+  # end
 
   def index
     # pass all the items that are avaliable for renting
-    @items = Item.all.order(created_at: :desc)
+    # @items = Item.all.order(created_at: :desc)
     if params[:user].present?
       @items = Item.where(user_id: params[:user])
     else
-      @items = Item.all
+      @items = Item.all.order(created_at: :desc)
     end
     #     if params[:query].present?
     #   @movies = Movie.where(title: params[:query])
@@ -79,7 +79,7 @@ class Api::V1::ItemsController < Api::V1::BaseController
   private
 
   def item_params
-    params.require(:item).permit(:name, :price, :description, :tag_list, :image)
+    params.require(:item).permit(:name, :price, :description, :image)
   end
 
   def render_error
