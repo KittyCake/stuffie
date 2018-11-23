@@ -9,7 +9,7 @@ class Api::V1::ItemsController < Api::V1::BaseController
 
   def index
     # pass all the items that are avaliable for renting
-    @items = Item.all
+    @items = Item.all.order(created_at: :desc)
   end
 
   def show
