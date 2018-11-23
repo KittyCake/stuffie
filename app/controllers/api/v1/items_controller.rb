@@ -9,6 +9,7 @@ class Api::V1::ItemsController < Api::V1::BaseController
 
   def index
     # pass all the items that are avaliable for renting
+    @items = Item.all.order(created_at: :desc)
     if params[:user].present?
       @items = Item.where(user_id: params[:user])
     else
@@ -19,6 +20,7 @@ class Api::V1::ItemsController < Api::V1::BaseController
     # else
     #   @movies = Movie.all
     # end
+
   end
 
   def show
