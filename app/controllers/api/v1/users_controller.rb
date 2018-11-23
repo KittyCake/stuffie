@@ -20,7 +20,8 @@ class Api::V1::UsersController < Api::V1::BaseController
     @user = User.find_or_create_by(openid: wechat_user.fetch("openid"))
     @user.regenerate_access_token
     render json: {
-      access_token: @user.access_token
+      access_token: @user.access_token,
+      id: @user.id
     }
   end
 
