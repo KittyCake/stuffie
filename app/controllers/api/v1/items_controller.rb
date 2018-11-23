@@ -9,7 +9,16 @@ class Api::V1::ItemsController < Api::V1::BaseController
 
   def index
     # pass all the items that are avaliable for renting
-    @items = Item.all
+    if params[:user].present?
+      @items = Item.where(user_id: params[:user])
+    else
+      @items = Item.all
+    end
+    #     if params[:query].present?
+    #   @movies = Movie.where(title: params[:query])
+    # else
+    #   @movies = Movie.all
+    # end
   end
 
   def show
