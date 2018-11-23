@@ -50,7 +50,6 @@ class Api::V1::ItemsController < Api::V1::BaseController
   end
 
   def update
-    raise
     @item = Item.find_by(id: params[:id])
     if @item.update(item_params)
       render :show
